@@ -14,8 +14,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="w-full">
-        <div className="items-center justify-center hidden py-4  bg-white lg:flex">
+      <nav className="w-full ">
+        <div className="items-center shadow-md justify-center hidden py-4  bg-white lg:flex">
           <div className="w-[80%] flex items-center justify-between ">
             <Link to="/" className="flex items-center ">
               <h1 className="font-mono uppercase font-semibold pr-[2px] text-2xl">
@@ -33,7 +33,7 @@ const Navbar = () => {
                   />
                   <BiSearchAlt2 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                 </div>
-                <button className="flex ml-2 items-center text-sm px-4 py-3 text-white uppercase rounded-md shadow-2xl bg-primary100 font-medium">
+                <button className="flex ml-2 items-center text-sm px-4 py-3 text-white uppercase rounded-md shadow-md bg-primary100 font-medium">
                   Search
                 </button>
               </div>
