@@ -4,7 +4,7 @@ import { IoShieldHalfOutline } from "react-icons/io5";
 
 const HeaderBanner = () => {
   return (
-    <div className="flex items-center justify-center  bg-gray-100 w-full h-10">
+    <div className="hidden lg:flex items-center justify-center bg-gray-100 w-full h-10">
       <div className="w-[80%]">
         <div className="w-[55%] b">
           <div className="flex items-center justify-between">
