@@ -4,6 +4,7 @@ import HeaderBanner from "../components/HeaderBanner";
 import Navbar from "../components/Navbar";
 import FirstSection from "../components/FirstSection";
 import SpecialOffers from "../components/SpecialOffers";
+import Trends from "../components/Trends";
 
 const LandingPage = () => {
   return (
@@ -20,6 +21,7 @@ const LandingPage = () => {
       <div className="w-full px-4 lg:px-0 lg:w-[80%]">
         <FirstSection />
         <SpecialOffers />
+        <Trends />
       </div>
     </div>
   );
