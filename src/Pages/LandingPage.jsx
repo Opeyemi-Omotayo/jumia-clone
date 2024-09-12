@@ -16,7 +16,7 @@ const LandingPage = () => {
       </div>
       <HeaderBanner />
       <Navbar />
-      <div className="w-[80%]">
+      <div className="w-full px-4 lg:px-0 lg:w-[80%]">
         <FirstSection />
       </div>
     </div>

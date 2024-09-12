@@ -1,18 +1,82 @@
 import React from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import Categories from "./Categories";
 import Banner from "./Banner";
 
 const FirstSection = () => {
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 1,
+    },
+    largeDesktop: {
+      breakpoint: { max: 3000, min: 1900 },
+      items: 1,
+    },
+    desktop: {
+      breakpoint: { max: 1900, min: 1024 },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 768 },
+      items: 3,
+    },
+    mobile: {
+      breakpoint: { max: 767, min: 280 },
+      items: 1.2,
+    },
+  };
+
+  const ads = [
+    {
+      src: "images/Artboard-1-copy-2.gif",
+      alt: "artboard",
+    },
+    {
+      src: "images/ju-ads.png",
+      alt: "ads",
+    },
+    {
+      src: "images/REDMI.jpg",
+      alt: "redmi",
+    },
+    {
+      src: "images/shoes.png",
+      alt: "shoes",
+    },
+    {
+      src: "https://ng.jumia.is/cms/0-1-initiatives/Why-pay-more/updated/712X384b_why.jpg",
+      alt: "why",
+    },
+  ];
+
   return (
     <div className="flex items-center justify-between mt-4">
       <Categories />
-      <div className="w-[80%] flex items-center ">
-        <Banner
-          src="https://ng.jumia.is/cms/0-1-initiatives/Why-pay-more/updated/712X384b_why.jpg"
-          alt="why"
-          className="h-[420px] rounded-sm"
-        />
-        <div className="ml-4 flex flex-col items-center justify-between h-[420px]">
+      <div className="w-full lg:w-[80%] flex items-center ">
+        <div className="h-[270px] lg:h-[420px] w-full lg:w-[70%]">
+          <Carousel
+            responsive={responsive}
+            autoPlay={true}
+            swipeable={true}
+            infinite={true}
+            partialVisible={false}
+            dotListClass="custom-dot-list-style"
+            showDots={true}
+            arrows={false}
+          >
+            {ads.map((ad, index) => (
+              <Banner
+                key={index}
+                src={ad.src}
+                alt={ad.alt}
+                className="h-[420px] rounded-sm w-full"
+              />
+            ))}
+          </Carousel>
+        </div>
+        <div className="ml-4 hidden lg:flex flex-col items-center justify-between h-[420px]">
           <div className="flex flex-col items-start justify-center bg-white p-4 shadow-sm rounded-md w-full h-[48%]">
             <div className="flex items-start my-3">
               <img
