@@ -55,7 +55,7 @@ const FirstSection = () => {
     <div className="flex items-center justify-between mt-4">
       <Categories />
       <div className="w-full lg:w-[80%] flex items-center ">
-        <div className="h-[270px] lg:h-[420px] w-full lg:w-[70%]">
+        <div className="h-[270px] lg:h-[420px] w-full lg:w-[75%]">
           <Carousel
             responsive={responsive}
             autoPlay={true}

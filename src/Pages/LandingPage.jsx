@@ -3,10 +3,11 @@ import Banner from "../components/Banner";
 import HeaderBanner from "../components/HeaderBanner";
 import Navbar from "../components/Navbar";
 import FirstSection from "../components/FirstSection";
+import SpecialOffers from "../components/SpecialOffers";
 
 const LandingPage = () => {
   return (
-    <div className="flex flex-col items-center  bg-gray-100 h-screen">
+    <div className="flex flex-col items-center  bg-gray-100 ">
       <div className="bg-primary w-full flex items-center justify-center ">
         <Banner
           src="images/festival.gif"
@@ -18,6 +19,7 @@ const LandingPage = () => {
       <Navbar />
       <div className="w-full px-4 lg:px-0 lg:w-[80%]">
         <FirstSection />
+        <SpecialOffers />
       </div>
     </div>
   );
