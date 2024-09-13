@@ -20,7 +20,7 @@ const Trends = () => {
   return (
     <div className="bg-white rounded-md shadow-sm grid grid-cols-3 gap-2 p-3 my-5">
       {trends.map((trend, index) => (
-        <Banner key={index} src={trend.image} alt={trend.alt} className="h-[250px] rounded-md shadow-sm hover:scale-95" />
+        <Banner key={index} src={trend.image} alt={trend.alt} className="h-[250px] w-full rounded-md shadow-sm hover:scale-95" />
       ))}
     </div>
   );

@@ -60,7 +60,7 @@ const Categories = () => {
   return (
     <div className="bg-white p-3 w-[18%] h-[420px] hidden lg:flex flex-col">
       {categories.map((item) => (
-        <div className="flex items-center text-sm text-gray-600 my-1 ">
+        <div className="flex items-center text-sm text-gray-600 hover:text-primary cursor-pointer my-1 ">
           {item.icon}
           <h1 className="capitalize font-normal leading-6 ml-3 ">
             {item.text}
@@ -68,7 +68,7 @@ const Categories = () => {
         </div>
       ))}
       <h1 className="capitalize text-sm text-gray-600 font-normal leading-6">Musical Instruments</h1>
-      <div className="flex items-center text-sm text-gray-600 my-2 ">
+      <div className="flex items-center text-sm text-gray-600 hover:text-primary cursor-pointer my-2 ">
           <TbDotsCircleHorizontal />
           <h1 className="capitalize font-normal leading-6 ml-3 ">Other Categories</h1>
         </div>

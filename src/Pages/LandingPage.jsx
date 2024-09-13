@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import FirstSection from "../components/FirstSection";
 import SpecialOffers from "../components/SpecialOffers";
 import Trends from "../components/Trends";
+import FlashSales from "../components/FlashSales";
 
 const LandingPage = () => {
   return (
@@ -22,6 +23,7 @@ const LandingPage = () => {
         <FirstSection />
         <SpecialOffers />
         <Trends />
+        <FlashSales />
       </div>
     </div>
   );
