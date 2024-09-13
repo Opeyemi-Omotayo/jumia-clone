@@ -6,6 +6,8 @@ import FirstSection from "../components/FirstSection";
 import SpecialOffers from "../components/SpecialOffers";
 import Trends from "../components/Trends";
 import FlashSales from "../components/FlashSales";
+import FestivalDeals from "../components/FestivalDeals";
+import BestDeals from "../components/BestDeals";
 
 const LandingPage = () => {
   return (
@@ -19,11 +21,13 @@ const LandingPage = () => {
       </div>
       <HeaderBanner />
       <Navbar />
-      <div className="w-full px-4 lg:px-0 lg:w-[80%]">
+      <div className="w-full px-4 lg:px-0 lg:w-[80%] 2xl:w-[75%] ">
         <FirstSection />
         <SpecialOffers />
         <Trends />
         <FlashSales />
+        <FestivalDeals />
+        <BestDeals />
       </div>
     </div>
   );

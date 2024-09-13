@@ -121,7 +121,7 @@ const FlashSales = () => {
       </div>
       <div className="p-3 w-full flex overflow-x-auto space-x-4">
         {salesItems.map((item, index) => (
-          <div key={index} className="w-48 text-sm mr-2 flex-shrink-0">
+          <div key={index} className="w-48 text-sm mr-2 flex-shrink-0 shadow hover:shadow-md hover:scale-95">
             <img
               src={item.image}
               alt={item.name}
