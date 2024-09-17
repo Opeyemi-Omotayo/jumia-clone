@@ -19,8 +19,6 @@ const FestivalDeals = () => {
     return <div>Error: {error}</div>;
   }
 
-  console.log(products);
-
   return (
     <div className="bg-white rounded-md shadow-sm w-full overflow-hidden mt-5">
       <div className="flex items-center justify-between text-white bg-[#4B158D] p-4 rounded-t-md">
@@ -39,7 +37,7 @@ const FestivalDeals = () => {
             className=" text-sm hover:shadow-md hover:scale-95 cursor-pointer"
           >
             <img
-              src={product.image}
+              src={product.images[0]}
               alt={product.title}
               className="rounded-md h-48 w-full object-cover"
             />
@@ -47,8 +45,8 @@ const FestivalDeals = () => {
             <h1 className="text-gray-600 capitalize ">
               {product.title.slice(0, 20)}
             </h1>
-            <h2 className="text-base mt-1">₦{product.price}</h2>
-            <h2 className="text-gray-500 line-through text-xs mb-1">₦{product.price}</h2>
+            <h2 className="text-base mt-1">₦{(product.price).toLocaleString()}</h2>
+            <h2 className="text-gray-500 line-through text-xs mb-1">₦{(product.price).toLocaleString()}</h2>
             </div>
           </div>
         ))}

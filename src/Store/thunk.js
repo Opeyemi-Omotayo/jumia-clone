@@ -10,7 +10,7 @@ export const getAllProducts = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.error);
+      return thunkAPI.rejectWithValue(error.response.data?.error || "Something went wrong");
     }
   }
 );

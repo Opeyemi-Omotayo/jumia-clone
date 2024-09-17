@@ -35,8 +35,8 @@ const Sidebar = () => {
         <h1 className="uppercase ">My jumia account</h1>
         <FaChevronRight className="" />
       </div>
-      {navItems.map((item) => (
-        <div className="flex items-center text-base my-2 px-3">
+      {navItems.map((item, index) => (
+        <div key={index} className="flex items-center text-base my-2 px-3">
           {item.icon}
           <h1 className="capitalize font-normal leading-6 ml-3 ">{item.text}</h1>
         </div>
