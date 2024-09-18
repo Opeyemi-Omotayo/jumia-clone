@@ -127,6 +127,7 @@ const FlashSales = () => {
               alt={item.name}
               className="rounded-md h-48 w-full object-cover"
             />
+            <div className="p-2">
             <h1 className="text-gray-600 capitalize ">
               {item.name.slice(0, 20)}
             </h1>
@@ -140,6 +141,7 @@ const FlashSales = () => {
                 className="h-3 bg-primary rounded-lg"
                 style={{ width: `${item.percentage}%` }}
               />
+            </div>
             </div>
           </div>
         ))}

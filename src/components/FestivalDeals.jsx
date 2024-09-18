@@ -2,9 +2,11 @@ import React, {useEffect} from "react";
 import { useAppDispatch, useAppSelector } from "../Store/hooks";
 import { FaChevronRight } from "react-icons/fa6";
 import { getAllProducts } from "../Store/thunk";
+import { useNavigate } from "react-router-dom";
 
 const FestivalDeals = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { products, status, error } = useAppSelector((state) => state.products);
 
   useEffect(() => {
@@ -18,6 +20,10 @@ const FestivalDeals = () => {
   if (status === "failed") {
     return <div>Error: {error}</div>;
   }
+
+  const handleProductClick = (product) => {
+    navigate(`/${product.title.toLowerCase()}`, {state : { product }}); 
+  };
 
   return (
     <div className="bg-white rounded-md shadow-sm w-full overflow-hidden mt-5">
@@ -35,6 +41,7 @@ const FestivalDeals = () => {
           <div
             key={index}
             className=" text-sm hover:shadow-md hover:scale-95 cursor-pointer"
+            onClick={() => handleProductClick(product)}
           >
             <img
               src={product.images[0]}
