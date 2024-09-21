@@ -2,9 +2,11 @@ import React from "react";
 import Rating from "./Rating";
 import { MdAddShoppingCart } from "react-icons/md";
 import FlashSales from "./FlashSales";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  console.log(product);
+  const navigate = useNavigate();
+  
   return (
     <section>
       <div className="flex items-start bg-white shadow-md rounded-md w-full">
@@ -12,7 +14,7 @@ const ProductCard = ({ product }) => {
           <img
             src={product.images[0]}
             alt={product.title}
-            className="h-[300px] w-[270px]"
+            className="h-[300px] w-[300px]"
           />
         </div>
         <div className="p-4 w-full">
@@ -36,7 +38,10 @@ const ProductCard = ({ product }) => {
             {product.shippingInformation}
           </p>
           <Rating rating={product.rating} />
-          <button className="bg-primary text-white rounded-md shadow-lg w-full text-center py-3 flex items-center justify-center relative my-4">
+          <button
+            onClick={() => navigate("/cart")}
+            className="bg-primary text-white rounded-md shadow-lg w-full text-center py-3 flex items-center justify-center relative my-4"
+          >
             <MdAddShoppingCart className="absolute left-4 w-6 h-6" />
             Add to cart
           </button>
