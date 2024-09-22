@@ -3,10 +3,29 @@ import Rating from "./Rating";
 import { MdAddShoppingCart } from "react-icons/md";
 import FlashSales from "./FlashSales";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../Store/hooks";
+import { addToCart } from "../Store/thunk";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
-  
+  const dispatch = useAppDispatch();
+  // const { carts, status, error } = useAppSelector((state) => state.carts);
+
+  const handleAddToCart = () => {
+    const data = {
+      userId: 1,
+      products: [
+        {
+          id: product.id,
+          quantity: 4,
+        },
+      ],
+    };
+    dispatch(addToCart(data)).then(() =>
+      setTimeout(() => navigate("/cart"), 1000)
+    );
+  };
+
   return (
     <section>
       <div className="flex items-start bg-white shadow-md rounded-md w-full">
@@ -39,7 +58,7 @@ const ProductCard = ({ product }) => {
           </p>
           <Rating rating={product.rating} />
           <button
-            onClick={() => navigate("/cart")}
+            onClick={handleAddToCart}
             className="bg-primary text-white rounded-md shadow-lg w-full text-center py-3 flex items-center justify-center relative my-4"
           >
             <MdAddShoppingCart className="absolute left-4 w-6 h-6" />

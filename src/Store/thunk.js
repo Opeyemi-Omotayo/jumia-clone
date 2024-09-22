@@ -14,3 +14,17 @@ export const getAllProducts = createAsyncThunk(
     }
   }
 );
+
+export const addToCart = createAsyncThunk(
+  "addToCart",
+  async (data, thunkAPI) => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASEURL}/carts/add`, data
+      );
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data?.error || "Something went wrong");
+    }
+  }
+);

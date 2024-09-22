@@ -1,19 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import HeaderBanner from "../components/HeaderBanner";
 import Navbar from "../components/Navbar";
 import { useLocation } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import DeliveryAndReturns from "../components/DeliveryAndReturns";
+import { useAppSelector } from "../Store/hooks";
+import Alert from "../components/Alert";
 
 const Product = () => {
   const location = useLocation();
   const { product } = location.state;
-console.log(product, "ppp")
-  if(!product) return;
+  const { notify, status } = useAppSelector((state) => state.carts);
+  const [showAlert, setShowAlert] = useState(false);
+
+  useEffect(() => {
+    if (notify) {
+      setShowAlert(true);
+      const timer = setTimeout(() => {
+        setShowAlert(false);
+      }, 2000); 
+
+      return () => clearTimeout(timer);
+    }
+  }, [notify]);
+
+  if (!product) return null;
 
   return (
-    <div className="flex flex-col items-center  bg-gray-100 ">
+    <div className="flex flex-col items-center bg-gray-100 ">
       <div className="bg-primary w-full flex items-center justify-center ">
         <Banner
           src="images/festival.gif"
@@ -23,12 +38,13 @@ console.log(product, "ppp")
       </div>
       <HeaderBanner />
       <Navbar />
+      {showAlert && <Alert message={status} />}
       <div className="w-full flex items-start justify-between px-4 lg:px-0 lg:w-[80%] 2xl:w-[75%] my-4 ">
-        <div className="w-[71%]"> 
-            <ProductCard product={product} />
+        <div className="w-[71%]">
+          <ProductCard product={product} />
         </div>
         <div className="w-[28%]">
-            <DeliveryAndReturns />
+          <DeliveryAndReturns />
         </div>
       </div>
     </div>
