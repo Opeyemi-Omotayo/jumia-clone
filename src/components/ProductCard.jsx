@@ -3,7 +3,7 @@ import Rating from "./Rating";
 import { MdAddShoppingCart } from "react-icons/md";
 import FlashSales from "./FlashSales";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../Store/hooks";
+import { useAppDispatch } from "../Store/hooks";
 import { addToCart } from "../Store/thunk";
 
 const ProductCard = ({ product }) => {

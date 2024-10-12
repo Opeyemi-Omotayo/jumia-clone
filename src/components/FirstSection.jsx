@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Categories from "./Categories";
@@ -27,7 +27,6 @@ const FirstSection = () => {
       items: 1.2,
     },
   };
-
   const ads = [
     {
       src: "images/Artboard-1-copy-2.gif",
