@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { TbDotsCircleHorizontal } from "react-icons/tb";
 import { useAppDispatch, useAppSelector } from "../Store/hooks";
 import { getAllCategories } from "../Store/thunk";
 
 
 const Categories = () => {
   const dispatch = useAppDispatch();
-  const {status, error, categories} = useAppSelector((state) => state.categories);
+  const {categories} = useAppSelector((state) => state.categories);
   useEffect(() => {
     dispatch(getAllCategories())
   },[dispatch]);
