@@ -20,7 +20,7 @@ const Cart = () => {
       }, 1000);
     }
   }, [dispatch, notify]);
-  
+
   return (
     <div className="flex flex-col items-center  bg-gray-100 ">
       <div className="bg-primary w-full flex items-center justify-center ">

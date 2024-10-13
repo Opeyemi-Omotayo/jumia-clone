@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { deleteFromCart, updateCart } from "../../Store/cart/CartSlice";
+import Deletion from "../modals/Deletion";
 
 const CartCard = () => {
   const dispatch = useAppDispatch();
+  const [showModal, setShowModal] = useState(false);
+  const [productId, setProductId] = useState("");
   const { carts } = useAppSelector((state) => state.carts);
 
   const handleUpdateCart = (id, quantity) => {
@@ -21,12 +24,26 @@ const CartCard = () => {
     handleUpdateCart(cart.id, newQuantity);
   };
 
+  const handleRemoveFromCart = (id) => {
+    dispatch(deleteFromCart({ productId}));
+  };
+
+  const openModal = (id) => {
+    setShowModal(true);
+    setProductId(id);
+  };
 
   return (
     <div className="flex flex-col items-start bg-white shadow-md rounded-md w-full">
       <h1 className="font-semibold border-b w-full p-3 text-base">
         Cart ({carts?.length})
       </h1>
+      {showModal && (
+        <Deletion
+          closeModal={() => setShowModal(false)}
+          deleteCart={handleRemoveFromCart}
+        />
+      )}
       {carts.map((cart) => (
         <div
           className="flex items-start flex-col px-3 py-4 w-full border-t border-gray-100"
@@ -44,15 +61,21 @@ const CartCard = () => {
                   {cart?.title}
                 </h1>
                 <p className="text-primary text-xs">
-                  Stock: <span className="text-gray-700">{cart?.availabilityStatus}</span>
+                  Stock:{" "}
+                  <span className="text-gray-700">
+                    {cart?.availabilityStatus}
+                  </span>
                 </p>
               </div>
             </div>
-            <h1 className="font-semibold text-lg">₦{(cart?.price * cart.quantity).toFixed(2)}</h1>
+            <h1 className="font-semibold text-lg">
+              ₦{(cart?.price * cart.quantity).toFixed(2)}
+            </h1>
           </div>
           <div className="pt-2 flex items-center justify-between w-full">
             <h1
               className="text-primary uppercase flex items-center cursor-pointer"
+              onClick={() => openModal(cart.id)}
             >
               <MdDeleteOutline className="mr-3 w-6 h-6" /> Remove
             </h1>

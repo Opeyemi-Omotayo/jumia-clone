@@ -4,7 +4,7 @@ const initialState = {
   carts: [], 
   status: 'idle',
   error: '',
-  notify: false
+  notify: false,
 };
 
 const CartSlice = createSlice({
@@ -36,10 +36,8 @@ const CartSlice = createSlice({
         if (quantity > 0) {
           state.carts[productIndex].quantity = quantity;
           state.status = "cart updated successfully";
-        } else {
-          state.carts.splice(productIndex, 1);
-          state.status = "product removed from cart successfully";
-        }
+          state.notify = true;
+        } 
       } else {
         state.error = "Product not found in cart";
       }
@@ -50,6 +48,7 @@ const CartSlice = createSlice({
 
       if (productIndex !== -1) {
         state.carts.splice(productIndex, 1);
+        state.notify = true;
         state.status = "product removed from cart successfully";
       } else {
         state.error = "Product not found in cart";
