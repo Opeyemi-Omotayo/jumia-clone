@@ -1,17 +1,37 @@
 import React from "react";
 import { MdDeleteOutline } from "react-icons/md";
-import { useAppSelector } from "../../Store/hooks";
+import { useAppDispatch, useAppSelector } from "../../Store/hooks";
+import { deleteFromCart, updateCart } from "../../Store/cart/CartSlice";
 
 const CartCard = () => {
+  const dispatch = useAppDispatch();
   const { carts } = useAppSelector((state) => state.carts);
 
+  const handleUpdateCart = (id, quantity) => {
+    dispatch(updateCart({ productId: id, quantity }));
+  };
+
+  const handleIncrement = (cart) => {
+    const newQuantity = cart.quantity + 1;
+    handleUpdateCart(cart.id, newQuantity);
+  };
+
+  const handleDecrement = (cart) => {
+    const newQuantity = cart.quantity > 1 ? cart.quantity - 1 : 1;
+    handleUpdateCart(cart.id, newQuantity);
+  };
+
+
   return (
-    <div className="flex flex-col items-start bg-white shadow-md rounded-md w-full ">
+    <div className="flex flex-col items-start bg-white shadow-md rounded-md w-full">
       <h1 className="font-semibold border-b w-full p-3 text-base">
-        Cart({carts?.length})
+        Cart ({carts?.length})
       </h1>
       {carts.map((cart) => (
-        <div className="flex items-start flex-col px-3 py-4 w-full border-t border-gray-100" key={cart.id}>
+        <div
+          className="flex items-start flex-col px-3 py-4 w-full border-t border-gray-100"
+          key={cart.id}
+        >
           <div className="flex items-center justify-between w-full">
             <div className="flex items-start">
               <img
@@ -23,23 +43,33 @@ const CartCard = () => {
                 <h1 className="font-medium text-lg text-gray-600 leading-5">
                   {cart?.title}
                 </h1>
-                <p className="text-primary text-xs">stock: <span className="text-gray-700">{cart?.availabilityStatus}</span></p>
+                <p className="text-primary text-xs">
+                  Stock: <span className="text-gray-700">{cart?.availabilityStatus}</span>
+                </p>
               </div>
             </div>
-            <h1 className="font-semibold text-lg">₦{cart?.price}</h1>
+            <h1 className="font-semibold text-lg">₦{(cart?.price * cart.quantity).toFixed(2)}</h1>
           </div>
           <div className="pt-2 flex items-center justify-between w-full">
-            <h1 className="text-primary uppercase flex items-center">
+            <h1
+              className="text-primary uppercase flex items-center cursor-pointer"
+            >
               <MdDeleteOutline className="mr-3 w-6 h-6" /> Remove
             </h1>
             <div className="flex items-center">
-              <h1 className="bg-primary rounded-sm hover:bg-primary100 px-3 py-1 mr-2 cursor-pointer text-white">
+              <button
+                onClick={() => handleDecrement(cart)}
+                className="bg-primary rounded-sm hover:bg-primary100 px-3 py-1 mr-2 cursor-pointer text-white"
+              >
                 -
-              </h1>
-              <h1 className=" px-3 py-1 mr-2 cursor-pointer ">0</h1>
-              <h1 className="bg-primary cursor-pointer hover:bg-primary100 rounded-sm px-3 py-1 text-white">
+              </button>
+              <h1 className="px-3 py-1 mr-2">{cart.quantity}</h1>
+              <button
+                onClick={() => handleIncrement(cart)}
+                className="bg-primary cursor-pointer hover:bg-primary100 rounded-sm px-3 py-1 text-white"
+              >
                 +
-              </h1>
+              </button>
             </div>
           </div>
         </div>

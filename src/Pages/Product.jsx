@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Banner from "../components/Banner";
 import HeaderBanner from "../components/HeaderBanner";
 import Navbar from "../components/Navbar";
@@ -12,18 +12,6 @@ const Product = () => {
   const location = useLocation();
   const { product } = location.state;
   const { notify, status } = useAppSelector((state) => state.carts);
-  const [showAlert, setShowAlert] = useState(false);
-
-  useEffect(() => {
-    if (notify) {
-      setShowAlert(true);
-      const timer = setTimeout(() => {
-        setShowAlert(false);
-      }, 2000); 
-
-      return () => clearTimeout(timer);
-    }
-  }, [notify]);
 
   if (!product) return null;
 
@@ -38,7 +26,7 @@ const Product = () => {
       </div>
       <HeaderBanner />
       <Navbar />
-      {showAlert && <Alert message={status} />}
+      {notify && <Alert message={status} />}
       <div className="w-full flex items-start justify-between px-4 lg:px-0 lg:w-[80%] 2xl:w-[75%] my-4 ">
         <div className="w-[71%]">
           <ProductCard product={product} />
