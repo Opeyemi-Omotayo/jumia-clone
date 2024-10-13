@@ -49,10 +49,10 @@ const Navbar = () => {
                   <span className="mx-3 ">Help</span>
                   <FaChevronDown className=" w-3 h-3  " />
                 </div>
-                <div className="flex items-center ml-2 text-black hover:text-primary cursor-pointer">
+                <Link to="/cart" className="flex items-center ml-2 text-black hover:text-primary cursor-pointer">
                   <AiOutlineShoppingCart className="w-5 h-5 " />
                   <span className="mx-3 ">Cart</span>
-                </div>
+                </Link>
               </div>
             </div>
           </div>

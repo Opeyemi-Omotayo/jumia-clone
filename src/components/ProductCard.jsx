@@ -1,29 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Rating from "./Rating";
 import { MdAddShoppingCart } from "react-icons/md";
 import FlashSales from "./FlashSales";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../Store/hooks";
-import { addToCart } from "../Store/thunk";
+import { useAppDispatch, useAppSelector } from "../Store/hooks";
+import { addToCart, resetNotify } from "../Store/cart/CartSlice";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  // const { carts, status, error } = useAppSelector((state) => state.carts);
+  const { notify } = useAppSelector((state) => state.carts);
+  useEffect(() => {
+    if (notify) {
+      setTimeout(() => {
+        navigate("/cart");
+        dispatch(resetNotify());
+      }, 1000);
+    }
+  }, [notify, navigate, dispatch]);
 
-  const handleAddToCart = () => {
-    const data = {
-      userId: 1,
-      products: [
-        {
-          id: product.id,
-          quantity: 4,
-        },
-      ],
-    };
-    dispatch(addToCart(data)).then(() =>
-      setTimeout(() => navigate("/cart"), 1000)
-    );
+  const handleAddToCart = (product, quantity) => {
+    dispatch(addToCart({ product, quantity }));
   };
 
   return (
@@ -58,7 +55,7 @@ const ProductCard = ({ product }) => {
           </p>
           <Rating rating={product.rating} />
           <button
-            onClick={handleAddToCart}
+            onClick={() => handleAddToCart(product, 1)}
             className="bg-primary text-white rounded-md shadow-lg w-full text-center py-3 flex items-center justify-center relative my-4"
           >
             <MdAddShoppingCart className="absolute left-4 w-6 h-6" />
