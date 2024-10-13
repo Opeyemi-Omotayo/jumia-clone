@@ -58,12 +58,18 @@ const CartSlice = createSlice({
       state.status = "cart retrieved successfully";
       state.error = '';
     },
+    clearCart: (state) => {
+      state.carts = [];
+      state.status = "Thanks for doing business with us! Come back soon!!";
+      state.notify = true;
+      state.error = '';
+    },
     resetNotify: (state) => {
       state.notify = false;
     }
   }
 });
 
-export const { addToCart, updateCart, deleteFromCart, getCart, resetNotify } = CartSlice.actions;
+export const { addToCart, updateCart, deleteFromCart, getCart, clearCart, resetNotify } = CartSlice.actions;
 
 export default CartSlice.reducer;
