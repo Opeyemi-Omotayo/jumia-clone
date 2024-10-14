@@ -39,11 +39,11 @@ const Navbar = () => {
               </div>
 
               <div className="flex">
-                <div className="flex items-center mx-2 text-black hover:text-primary cursor-pointer">
+                <Link to="/login" className="flex items-center mx-2 text-black hover:text-primary cursor-pointer">
                   <BsPerson className="w-5 h-5 " />
                   <span className="mx-3 ">Account</span>
                   <FaChevronDown className=" w-3 h-3  " />
-                </div>
+                </Link>
                 <div className="flex items-center mx-2 text-black hover:text-primary cursor-pointer">
                   <FaRegCircleQuestion className="w-5 h-5 " />
                   <span className="mx-3 ">Help</span>
