@@ -1,5 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { auth } from "../firebaseConfig";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 export const getAllProducts = createAsyncThunk(
   "getAllProducts",
@@ -33,3 +38,34 @@ export const getAllCategories = createAsyncThunk(
   }
 );
 
+export const handleLogin = createAsyncThunk(
+  "handleLogin",
+  async ({ data }, thunkAPI) => {
+    const { email, password } = data;
+    try {
+      const response = await signInWithEmailAndPassword(auth, email, password);
+
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const handleSignup = createAsyncThunk(
+  "handleSignup",
+  async ({ data }, thunkAPI) => {
+    const { email, password } = data;
+    try {
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
