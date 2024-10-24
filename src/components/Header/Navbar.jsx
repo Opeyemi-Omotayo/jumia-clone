@@ -48,7 +48,7 @@ const Navbar = () => {
               <div className="flex flex-1 items-center">
                 <div className="relative flex-1">
                   <input
-                    type="text"
+                    type="search"
                     placeholder="search products, brands and categories"
                     className="w-full p-2 pl-10 placeholder:text-base text-base text-black rounded-md outline-none border-gray-500 border"
                   />

@@ -26,7 +26,7 @@ const FestivalDeals = () => {
   };
 
   return (
-    <div className="bg-white rounded-md shadow-sm w-full overflow-hidden mt-5">
+    <div className="bg-white rounded-md shadow-sm w-full overflow-hidden my-5">
       <div className="flex items-center justify-between text-white bg-[#4B158D] p-4 rounded-t-md">
         <h1 className="text-white font-bold capitalize text-lg">
           Jumia Festival Deals
@@ -49,7 +49,7 @@ const FestivalDeals = () => {
               className="rounded-md h-48 w-full object-cover"
             />
             <div className="p-2">
-            <h1 className="text-gray-600 capitalize ">
+            <h1 className="text-gray-600 text-sm capitalize ">
               {product.title.slice(0, 20)}
             </h1>
             <h2 className="text-base mt-1">₦{(product.price).toLocaleString()}</h2>

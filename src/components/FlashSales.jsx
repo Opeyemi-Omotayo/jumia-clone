@@ -119,16 +119,16 @@ const FlashSales = () => {
           <FaChevronRight />
         </div>
       </div>
-      <div className="p-3 w-full flex overflow-x-auto space-x-4">
+      <div className="p-3 w-full flex overflow-x-auto space-x-2">
         {salesItems.map((item, index) => (
-          <div key={index} className="w-48 text-sm mr-2 flex-shrink-0 shadow hover:shadow-md hover:scale-95">
+          <div key={index} className="w-44 text-sm flex-shrink-0 hover:shadow-md hover:scale-95">
             <img
               src={item.image}
               alt={item.name}
               className="rounded-md h-48 w-full object-cover"
             />
             <div className="p-2">
-            <h1 className="text-gray-600 capitalize ">
+            <h1 className="text-gray-600 text-sm capitalize ">
               {item.name.slice(0, 20)}
             </h1>
             <h2 className="text-base mt-1">{item.discountedPrice}</h2>

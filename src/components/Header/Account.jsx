@@ -24,7 +24,7 @@ const Account = () => {
           </button>
         </div>
       ) : (
-        <Link to="login">
+        <Link to="/login">
           <div className="py-4 mx-4">
             <button className="w-full bg-primary rounded-md text-white px-3 py-2 hover:bg-primary100 shadow-md">SIGN IN</button>
           </div>
