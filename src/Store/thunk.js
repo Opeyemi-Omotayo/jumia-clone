@@ -41,7 +41,7 @@ export const getAllCategories = createAsyncThunk(
 export const handleLogin = createAsyncThunk(
   "handleLogin",
   async ({ data }, thunkAPI) => {
-    const { email, password } = data;
+    const { email, password } = data?.data;
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
 
@@ -55,14 +55,14 @@ export const handleLogin = createAsyncThunk(
 export const handleSignup = createAsyncThunk(
   "handleSignup",
   async ({ data }, thunkAPI) => {
-    const { email, password } = data;
+    const { email, password } = data?.data;
+
     try {
       const response = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

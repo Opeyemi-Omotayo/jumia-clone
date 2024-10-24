@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Banner from "../components/Banner";
-import HeaderBanner from "../components/HeaderBanner";
-import Navbar from "../components/Navbar";
+import HeaderBanner from "../components/Header/HeaderBanner";
+import Navbar from "../components/Header/Navbar";
 import EmptyCart from "../components/cart/EmptyCart";
 import CartCard from "../components/cart/CartCard";
 import CartSummary from "../components/cart/CartSummary";

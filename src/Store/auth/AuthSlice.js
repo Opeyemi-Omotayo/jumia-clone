@@ -2,10 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { handleLogin, handleSignup } from "../thunk";
 
 const initialState = {
-  auth: [],
+  auth: "",
   status: "idle",
   error: "",
   notify: false,
+  user: "", 
 };
 
 const AuthSlice = createSlice({
@@ -13,8 +14,8 @@ const AuthSlice = createSlice({
   initialState,
   reducers: {
     resetNotify: (state) => {
-        state.notify = false;
-      }
+      state.notify = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -23,20 +24,25 @@ const AuthSlice = createSlice({
         state.error = "nil";
       })
       .addCase(handleLogin.fulfilled, (state, action) => {
+        const { uid, email, displayName, stsTokenManager } = action.payload.user;
         state.status = "success";
         state.auth = "User logged in successfully";
         state.error = "nil";
         state.notify = true;
+        state.user = {
+          uid,
+          email,
+          displayName,
+          accessToken: stsTokenManager.accessToken, 
+        }; 
       })
       .addCase(handleLogin.rejected, (state, action) => {
         state.status = "failed";
         if (action.payload === "Firebase: Error (auth/wrong-password).") {
           state.error = "Email or Password not correct";
-        } else if (
-          (action.payload = "Firebase: Error (auth/user-not-found).")
-        ) {
+        } else if (action.payload === "Firebase: Error (auth/user-not-found).") {
           state.error = "User does not exist, try creating an account";
-        }else{
+        } else {
           state.error = "Unable to sign up, Please try again later";
         }
       })
@@ -46,10 +52,17 @@ const AuthSlice = createSlice({
         state.error = "nil";
       })
       .addCase(handleSignup.fulfilled, (state, action) => {
+        const { uid, email, displayName, stsTokenManager } = action.payload.user;
         state.status = "success";
-        state.auth = "User logged in successfully";
+        state.auth = "User signed up successfully";
         state.error = "nil";
         state.notify = true;
+        state.user = {
+          uid,
+          email,
+          displayName,
+          accessToken: stsTokenManager.accessToken,
+        }; 
       })
       .addCase(handleSignup.rejected, (state, action) => {
         state.status = "failed";

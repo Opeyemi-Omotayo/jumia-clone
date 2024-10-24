@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "../components/Banner";
-import HeaderBanner from "../components/HeaderBanner";
-import Navbar from "../components/Navbar";
+import HeaderBanner from "../components/Header/HeaderBanner";
+import Navbar from "../components/Header/Navbar";
 import { useLocation } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import DeliveryAndReturns from "../components/DeliveryAndReturns";

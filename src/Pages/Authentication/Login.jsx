@@ -9,10 +9,8 @@ import MiniLoader from "../../components/preloader/MiniLoader";
 import { useForm } from "react-hook-form";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const { auth, error, notify,status } = useAppSelector((state) => state.auth);
+  const { auth, error, notify, status } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
-  const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
   const {
@@ -20,7 +18,6 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   useEffect(() => {
     if (notify) {
       setTimeout(() => {
@@ -30,13 +27,7 @@ const LoginPage = () => {
     }
   }, [notify, dispatch, navigate]);
 
-  const data = {
-    email,
-    password,
-  };
-
   const onSubmit = async (data) => {
-    console.log(data)
     if (isLogin) {
       loginHandler({data})
     } else {
@@ -49,23 +40,17 @@ const LoginPage = () => {
       .then((res) => {
         if (res.meta.requestStatus === "fulfilled") {
           console.log(res, "User logged in successfully");
-          setEmail("");
-          setPassword("");
+        
         } else {
           console.log(res.payload, "Login failed");
         }
-      })
-      .catch((err) => {
-        console.log(err, "dispatch error");
       });
   };
 
   const signupHandler = async (data) => {
     await dispatch(handleSignup({ data })).then((res) => {
       if (res.meta.requestStatus === "fulfilled") {
-        console.log(res, "User created successfully");
-        setEmail("");
-        setPassword("");
+        console.log(res, "User created successfully");  
       } else {
         console.log(res.payload, "Login failed");
       }
