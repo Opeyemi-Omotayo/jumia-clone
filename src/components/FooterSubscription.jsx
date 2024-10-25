@@ -39,7 +39,7 @@ const FooterSubscription = () => {
             </div>
           </div>
           <div className="flex mt-6">
-            <div className="flex items-center justify-center cursor-pointer hover:bg-orange-200 rounded-[50%] w-12 h-8 ml-[-7px] mr-1">
+            <div className="flex items-center justify-center cursor-pointer hover:bg-orange-200 rounded-[50%] p-2 h-fit ml-[-7px] mr-1">
               {isClicked ? (
                 <IoMdCheckbox
                   onClick={() => setIsClicked(!isClicked)}

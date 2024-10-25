@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
           <img
             src={product.images[0]}
             alt={product.title}
-            className="h-[300px] w-[300px]"
+            className="h-[200px] w-[300px]"
           />
         </div>
         <div className="p-4 w-full">

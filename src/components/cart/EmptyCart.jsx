@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const EmptyCart = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex items-center justify-center flex-col py-10 bg-white shadow-md rounded-md w-full">
       <img src="images/cart-empty.svg" alt="empty cart" />
@@ -11,6 +14,7 @@ const EmptyCart = () => {
         Browse our categories and discover our best deals!
       </p>
       <button
+      onClick={() => navigate("/")}
             className="bg-primary text-white rounded-md uppercase shadow-lg w-[70%] lg:w-[25%] mt-8 text-center py-3 flex items-center justify-center relative"
           >
             start shopping
