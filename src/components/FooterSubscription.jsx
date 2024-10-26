@@ -10,7 +10,7 @@ const FooterSubscription = () => {
 
   return (
     <div className="w-full lg:w-[80%] 2xl:w-[75%] ">
-      <div className=" grid grid-cols-4 gap-3 py-6">
+      <div className="hidden lg:grid lg:grid-cols-4 gap-3 py-6">
         <Link to="/" className="flex items-center w-[30%] ">
           <h1 className="font-mono text-white uppercase font-semibold pr-[2px] text-2xl">
             jumia
@@ -89,6 +89,17 @@ const FooterSubscription = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="grid lg:hidden grid-cols-3 gap-3 p-6">
+        <h1 className="text-white text-xs uppercase">Chat with us</h1>
+        <h1 className="text-white text-xs uppercase">help center</h1>
+        <h1 className="text-white text-xs uppercase">Contact us</h1>
+        <h1 className="text-white text-xs uppercase">terms & conditions</h1>
+        <h1 className="text-white text-xs uppercase">privary notice</h1>
+        <h1 className="text-white text-xs uppercase">cookie notice</h1>
+        <h1 className="text-white text-xs uppercase">become a seller</h1>
+        <h1 className="text-white text-xs uppercase">report a product</h1>
+        <h1 className="text-white text-xs uppercase">anniversary deals</h1>
       </div>
     </div>
   );

@@ -72,7 +72,7 @@ const LoginPage = () => {
     <div className="flex flex-col items-center justify-center py-12 md:py-16">
       {notify && <Alert message={auth} />}
       <div className="w-full md:w-3/5 lg:w-[35%] xl:w-[30%]">
-        <div className="flex items-center justify-center flex-col">
+        <div className="flex items-center justify-center px-4 lg:px-0 flex-col">
           <Link to="/">
             <MdStars className="text-primary w-20 h-20" />
           </Link>

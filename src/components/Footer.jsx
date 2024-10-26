@@ -15,7 +15,7 @@ const Footer = () => {
         <FooterSubscription />
       </div>
       <div className="flex flex-col items-center justify-center">
-        <div className="text-sm grid grid-cols-4 gap-6 w-full lg:w-[80%] border-b pb-12 2xl:w-[75%]  cursor-pointer text-white mt-6">
+        <div className="text-sm hidden lg:grid grid-cols-4 gap-6 w-full lg:w-[80%] border-b pb-12 2xl:w-[75%]  cursor-pointer text-white mt-6">
           <div>
             <h1 className="font-bold mb-4 uppercase">Need Help?</h1>
             <p>Chat with us</p>
@@ -92,7 +92,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="text-sm text-white flex items-center pt-4 pb-8"><MdCopyright className="mr-1 w-5 h-5"/>2024 Opeyemi Omotayo        </p>
+        <p className="text-xs lg:text-sm text-white flex items-center pt-2 pb-4  lg:pt-4 lg:pb-8"><MdCopyright className="mr-1 w-5 h-5"/>2024 Opeyemi Omotayo        </p>
       </div>
     </main>
   );

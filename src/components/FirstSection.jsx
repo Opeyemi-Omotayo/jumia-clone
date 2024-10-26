@@ -20,11 +20,11 @@ const FirstSection = () => {
     },
     tablet: {
       breakpoint: { max: 1024, min: 768 },
-      items: 3,
+      items: 2,
     },
     mobile: {
       breakpoint: { max: 767, min: 280 },
-      items: 1.2,
+      items: 1,
     },
   };
   const ads = [
@@ -70,7 +70,7 @@ const FirstSection = () => {
                 key={index}
                 src={ad.src}
                 alt={ad.alt}
-                className="h-[420px] rounded-sm w-full"
+                className="h-[300px] lg:h-[420px] rounded-sm w-full"
               />
             ))}
           </Carousel>

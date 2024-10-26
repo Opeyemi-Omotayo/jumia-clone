@@ -16,7 +16,7 @@ const BestDeals = () => {
   return (
     <div className="bg-white rounded-md shadow-sm grid grid-cols-2 gap-2 p-3 mt-5 mb-14">
       {deals.map((deal, index) => (
-        <Banner key={index} src={deal.image} alt={deal.alt} className="h-[250px] w-full rounded-md shadow-sm hover:scale-95" />
+        <Banner key={index} src={deal.image} alt={deal.alt} className="h-[150px] md:h-[200px] lg:h-[250px] w-full rounded-md shadow-sm hover:scale-95" />
       ))}
     </div>
   );

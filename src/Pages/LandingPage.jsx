@@ -30,7 +30,7 @@ const LandingPage = () => {
       </div>
       <HeaderBanner />
       <Navbar />
-      <div className="w-full px-4 lg:px-0 lg:w-[80%] 2xl:w-[75%] ">
+      <div className="w-full px-3 lg:px-0 lg:w-[80%] 2xl:w-[75%] ">
         <FirstSection />
         <SpecialOffers />
         <Trends />

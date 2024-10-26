@@ -27,11 +27,11 @@ const Product = () => {
       <HeaderBanner />
       <Navbar />
       {notify && <Alert message={status} />}
-      <div className="w-full flex items-start justify-between px-4 lg:px-0 lg:w-[80%] 2xl:w-[75%] my-4 ">
-        <div className="w-[71%]">
+      <div className="w-full flex flex-col lg:flex-row items-start justify-between px-4 lg:px-0 lg:w-[80%] 2xl:w-[75%] my-4 ">
+        <div className="w-full lg:w-[71%]">
           <ProductCard product={product} />
         </div>
-        <div className="w-[28%]">
+        <div className="w-full lg:w-[28%]">
           <DeliveryAndReturns />
         </div>
       </div>

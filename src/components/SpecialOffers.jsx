@@ -53,7 +53,7 @@ const SpecialOffers = () => {
   ];
 
   return (
-    <div className="bg-white p-2 lg:p-3  mt-[10.5rem] lg:mt-5 rounded-md shadow-md grid grid-cols-4 lg:grid-cols-6 gap-1 lg:gap-2">
+    <div className="bg-white p-2 lg:p-3  mt-[2.5rem] lg:mt-5 rounded-md shadow-md grid grid-cols-4 lg:grid-cols-6 gap-1 lg:gap-2">
       {offers.map((offer, index) => (
         <div className="hover:scale-95 " key={index}>
             <img src={offer.image} alt={offer.text} className="rounded-md shadow-sm"/>

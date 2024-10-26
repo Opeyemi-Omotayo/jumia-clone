@@ -57,8 +57,11 @@ const CartCard = () => {
                 className="w-20 h-20 rounded-md shadow mr-4"
               />
               <div>
-                <h1 className="font-medium text-lg text-gray-600 leading-5">
-                  {cart?.title}
+                <h1 className="font-medium text-base lg:text-lg block lg:hidden text-gray-600 leading-5">
+                  {`${cart?.title.slice(0, 20)}${cart?.title.slice(0, 20) ? "..." : ""}`}
+                </h1>
+                <h1 className="font-medium text-base lg:text-lg hidden lg:block text-gray-600 leading-5">
+                  {`${cart?.title}`}
                 </h1>
                 <p className="text-primary text-xs">
                   Stock:{" "}
@@ -69,12 +72,12 @@ const CartCard = () => {
               </div>
             </div>
             <h1 className="font-semibold text-lg">
-              ₦{(cart?.price * cart.quantity).toFixed(2)}
+              ₦{cart?.price}
             </h1>
           </div>
           <div className="pt-2 flex items-center justify-between w-full">
             <h1
-              className="text-primary uppercase flex items-center cursor-pointer"
+              className="text-primary uppercase text-sm lg:text-base flex items-center cursor-pointer"
               onClick={() => openModal(cart.id)}
             >
               <MdDeleteOutline className="mr-3 w-6 h-6" /> Remove
@@ -82,14 +85,14 @@ const CartCard = () => {
             <div className="flex items-center">
               <button
                 onClick={() => handleDecrement(cart)}
-                className="bg-primary rounded-sm hover:bg-primary100 px-3 py-1 mr-2 cursor-pointer text-white"
+                className="bg-primary rounded-sm hover:bg-primary100 px-2.5 py-0.5 lg:px-3 lg:py-1 mr-2 cursor-pointer text-white"
               >
                 -
               </button>
-              <h1 className="px-3 py-1 mr-2">{cart.quantity}</h1>
+              <h1 className="px-3 py-1 mr-2 text-sm lg:text-base">{cart.quantity}</h1>
               <button
                 onClick={() => handleIncrement(cart)}
-                className="bg-primary cursor-pointer hover:bg-primary100 rounded-sm px-3 py-1 text-white"
+                className="bg-primary cursor-pointer hover:bg-primary100 rounded-sm px-2.5 py-0.5 lg:px-3 lg:py-1 text-white"
               >
                 +
               </button>

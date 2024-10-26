@@ -26,8 +26,8 @@ const CartSummary = () => {
   };
 
   return (
-    <div className="flex flex-col items-start text-sm bg-white shadow-md rounded-md w-full">
-      <h1 className="font-semibold uppercase border-b w-full p-3 text-base">
+    <div className="flex flex-col items-start text-sm bg-white shadow-md rounded-md w-full mt-6 lg:mt-0">
+      <h1 className="font-semibold uppercase border-b w-full p-3 text-base hidden lg:block">
         Cart summary
       </h1>
       <div className=" w-full">
