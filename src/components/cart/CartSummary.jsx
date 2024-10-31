@@ -2,10 +2,18 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { PaystackButton } from "react-paystack";
 import { clearCart } from "../../Store/cart/CartSlice";
+import { formatEmail } from "../../utils/formatEmail";
+import { useNavigate } from "react-router-dom";
 
 const CartSummary = () => {
+  const navigate = useNavigate();
   const { carts } = useAppSelector((state) => state.carts);
   const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.auth);
+  let name;
+  if (user) {
+    name = formatEmail(user?.email);
+  }
   const publicKey = `${process.env.REACT_APP_PAYSTACK_KEY}`;
 
   const calculateTotalPrice = carts.reduce((total, cart) => {
@@ -38,13 +46,16 @@ const CartSummary = () => {
           </h2>
         </div>
         <div className="p-3">
-          <PaystackButton
-            {...componentProps}
-            className="bg-primary text-white rounded-md uppercase shadow-lg w-full text-center py-3 flex items-center justify-center relative"
-          />
-          {/* <button >
-            checkout (₦ {calculateTotalPrice.toFixed(2)})
-          </button> */}
+          {name ? (
+            <PaystackButton
+              {...componentProps}
+              className="bg-primary text-white rounded-md uppercase shadow-lg w-full text-center py-3 flex items-center justify-center relative"
+            />
+          ) : (
+            <button onClick={() => navigate("/login")} className="bg-primary text-white rounded-md uppercase shadow-lg w-full text-center py-3 flex items-center justify-center relative">
+              checkout (₦ {calculateTotalPrice.toFixed(2)})
+            </button>
+          )}
         </div>
       </div>
     </div>
